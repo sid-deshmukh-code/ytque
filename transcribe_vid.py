@@ -2,9 +2,16 @@ from youtube_transcript_api import YouTubeTranscriptApi
   
 # assigning srt variable with the list 
 # of dictionaries obtained by the get_transcript() function
-srt = YouTubeTranscriptApi.get_transcript("SW14tOda_kI")
+def transcribe_text(url):
+    
+    srt = YouTubeTranscriptApi.get_transcript(url)  
+    transcribed_text = ""
+    for i in srt:
+        text_ = i['text']
+        transcribed_text += text_
 
-  
 
-for i in srt:
-    transcribed_text = i['text']
+    return transcribed_text
+
+if __name__ == "__main__":
+    print(transcribe_text("EHi0RDZ31VA"))
